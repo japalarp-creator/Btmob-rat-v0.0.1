@@ -1,0 +1,3 @@
+// C:\Users\User\AppData\Local\Temp\kilo\rat\settings.gradle
+rootProject.name = "Rat"
+include ':app'
