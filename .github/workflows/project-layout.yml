@@ -1,0 +1,28 @@
+name: Project layout checks
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  layout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required project files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s README.md
+          test -s build.gradle
+          test -s settings.gradle
+          test -s app/build.gradle
+          test -s app/src/main/AndroidManifest.xml
+          echo "Required project files are present."
